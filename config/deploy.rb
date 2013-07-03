@@ -1,3 +1,7 @@
+set :user, "ubuntu"
+server "ec2-174-129-183-113.compute-1.amazonaws.com", :app, :web, :db, :primary => true
+ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/katsu.pem"]
+
 # Automatically precompile assets
 load "deploy/assets"
  
@@ -6,6 +10,9 @@ require "bundler/capistrano"
  
 # RVM integration
 require "rvm/capistrano"
+
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
  
 # Application name
 set :application, "katsu"
@@ -17,7 +24,7 @@ set :rails_env, :production
 set :user_rails, "ubuntu"
  
 # App Domain
-set :domain, "katsu-sushi"
+set :domain, "ec2-174-129-183-113.compute-1.amazonaws.com"
  
 # We don't want to use sudo (root) - for security reasons
 set :use_sudo, false
