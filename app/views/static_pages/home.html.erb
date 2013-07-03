@@ -1,0 +1,79 @@
+<div class="carousel slide carousel-fade" id="feature_slider">
+	<div class="carousel-inner">
+		<div class="item active">
+			<%= image_tag 'katsu-restaurant.png' %>
+			<div class="info">
+				<h2>Located in Manhattan Beach</h2>
+			</div>
+			<div id="mapCanvas">
+			</div>
+		</div>
+		<div class="item">
+			<%= image_tag 'katsu-chef.png' %>
+			<div class="info-right">
+				<h2>Happy Hour Everyday 5:30pm-6:30pm</h2>
+			</div>
+		</div>
+	</div>
+	<a data-slide="prev" href="#myCarousel" class="left carousel-control">‹</a>
+	<a data-slide="next" href="#myCarousel" class="right carousel-control">›</a>
+</div>
+
+<div id="our_food" class="section container">
+	<h3>Our Food</h3>
+	<div class="row">
+		<div class="span4">
+			<div class="text">
+				<h5>Happy Hour</h5>
+			</div>
+			<div class="imgbox">
+				<%= image_tag 'katsu-salmon.png' %>
+			</div>
+			<div class="text">
+				<p>Every day is happy hour. 7 days a week from 5:30pm to 6:30pm (cash only).</p>
+			</div>
+		</div>
+		<div class="span4">
+			<div class="text">
+				<h5>Lunch</h5>
+			</div>
+			<div class="imgbox">
+				<%= image_tag 'katsu-uni.png' %>
+			</div>
+			<div class="text">
+				<p>Join us for lunch. Monday - Friday, 11:30am to 2:30pm</p>
+			</div>
+		</div>
+		<div class="span4">
+			<div class="text">
+				<h5>Dinner</h5>
+			</div>
+			<div class="imgbox">
+				<%= image_tag 'katsu-katsu.png' %>
+			</div>
+			<div class="text">
+				<h5>Dinner</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="our_location" class="section container">
+	<h3>Our Location</h3>
+	<div class="row">
+		<div class="span4">
+			<div class="text">
+				<h5>Address</h5>
+				<p>302 Rosecrans Ave.<br/>Manhattan Beach, CA 90266</p>
+				<h5>Hours</h5>
+				<p>
+					Lunch: Monday - Friday 11:30 - 2:30<br/>
+					Dinner: Every Day 5:30 - 10:00
+				</P>
+			</div>
+		</div>
+		<div class="span8" id="mapCanvas2">
+		</div>
+	</div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>

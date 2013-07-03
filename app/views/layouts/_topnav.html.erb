@@ -1,0 +1,29 @@
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag('katsu_reversed_logo.png'), root_path, class: "brand" %>
+      <div class="nav-collapse collapse">
+        <div class="navbar-text pull-right">
+          <span>302 Rosecrans Ave.</span>
+          <br/>
+          <span>Manhattan Beach, CA 90266</span>
+          <br/>
+          <span>310.546.3761</span>
+          <%# render 'layouts/socialmedia' %>
+        </div>
+        <ul class="nav">
+          <li><a href="#" class="active">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#location">LOCATION</a></li>
+          <li><a href="#menu">MENU</a></li>
+        </ul>
+      </div>
+    </div>
+    <%= yield :subnav %>
+  </div>
+</div>
