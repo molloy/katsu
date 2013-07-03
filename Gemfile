@@ -38,3 +38,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'bootstrap-sass'
+
+gem 'unicorn'
+gem 'capistrano'
+gem 'rvm-capistrano'
