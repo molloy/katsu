@@ -1,5 +1,5 @@
 set :user, "ubuntu"
-server "ec2-23-21-21-236.compute-1.amazonaws.com", :app, :web, :db, :primary => true
+server "katsu-sushi.com", :app, :web, :db, :primary => true
 ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/katsu.pem"]
 
 # Automatically precompile assets
@@ -24,7 +24,7 @@ set :rails_env, :production
 set :user_rails, "ubuntu"
  
 # App Domain
-set :domain, "ec2-23-21-21-236.compute-1.amazonaws.com"
+set :domain, "katsu-sushi.com"
  
 # We don't want to use sudo (root) - for security reasons
 set :use_sudo, false
