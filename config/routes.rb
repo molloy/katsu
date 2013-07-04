@@ -58,9 +58,11 @@ Katsu::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  resources :home
+  # resources :home
 
   get 'static_pages/home'
+  get 'static_pages/menu'
+  
 
   root :to => 'static_pages#home'
 
