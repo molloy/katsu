@@ -110,9 +110,23 @@ body {
 		-o-transition: opacity 2s ease-in-out;
 		transition: opacity 2s ease-in-out;
 
-		img {
-			min-width: 100%;
-			max-width: 100%;
+		// img {
+		// 	min-width: 100%;
+		// 	max-width: 100%;
+		// }
+
+		.subfeature-happyhour-icon1 {
+			position: absolute;
+			top: 160px;
+			left: -145px;
+			z-index: 1;
+		}
+
+		.subfeature-happyhour-icon2 {
+			position: absolute;
+			top: 160px;
+			left: -145px;
+			z-index: 2;
 		}
 
 		.info {
@@ -136,8 +150,13 @@ body {
 			position: absolute;
 			left: 57%;
 			width: 30%;
+			// max-width: none;
 			// display: none;
 			z-index: 10;
+
+			img {
+				max-width: none;
+			}
 
 			h2 {
 				color: #fff;
@@ -182,6 +201,10 @@ body {
 
 #mapCanvas2 {
 	height: 400px;
+
+	img {
+		max-width: none;
+	}
 }
 
 .section.container {

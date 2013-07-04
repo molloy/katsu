@@ -3,32 +3,46 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-	if ($('#feature_slider').length > 0)
+	feature_slider = $('#feature_slider')
+	if (feature_slider.length > 0)
 	    $(window).scroll ->
-	        if ($(".navbar").offset().top>30)
-	            $(".navbar-fixed-top > .navbar-inner").addClass("sticky")
-	        else
-	            $(".navbar-fixed-top > .navbar-inner").removeClass("sticky")
+			if ($(".navbar").offset().top > 30)
+			    $(".navbar-fixed-top > .navbar-inner").addClass("sticky")
+			else
+			    $(".navbar-fixed-top > .navbar-inner").removeClass("sticky")
 
-		feature_slider = $('#feature_slider').carousel({
-			interval: 7000;
-		});
+		subfeature_happyhour_icon1 = $('.subfeature-happyhour-icon1')
+		subfeature_happyhour_icon2 = $('.subfeature-happyhour-icon2')
+		feature_left = $('.info').first().offset().left
 
-		$('.left.carousel-control').click => $('#feature_slider').carousel('prev')
-		$('.right.carousel-control').click => $('#feature_slider').carousel('next')
-		feature_slider.on slid: ->
+		feature_slider_carousel = feature_slider.carousel({ interval: 7000; })
+
+
+		$('.left.carousel-control').click => feature_slider.carousel('prev')
+		$('.right.carousel-control').click => feature_slider.carousel('next')
+		feature_slider_carousel.on slid: ->
 			$('.active > .info').fadeIn()
 			$('.active > .info-right').fadeIn()
-			if (!$('#mapCanvas').is(":hidden"))
+			if ($('#mapCanvas').parent().hasClass('active'))
 				$('#mapCanvas').animate top: "+=460px", "slow"
+			if (subfeature_happyhour_icon1.parent().hasClass('active'))
+				subfeature_happyhour_icon1.offset({left: -(subfeature_happyhour_icon1.width())})
+				subfeature_happyhour_icon1.animate left: "+=" + (subfeature_happyhour_icon1.width() + feature_left) + "px"
+			if (subfeature_happyhour_icon2.parent().hasClass('active'))
+				subfeature_happyhour_icon2.offset({left: -(subfeature_happyhour_icon2.width())})
+				subfeature_happyhour_icon2.animate left: "+=" + (subfeature_happyhour_icon1.width() + subfeature_happyhour_icon2.width() + feature_left) + "px"
 
-		feature_slider.on slide: -> 
+		feature_slider_carousel.on slide: -> 
 			$('.info').fadeOut()
 			$('.info-right').fadeOut()
-			if $('#mapCanvas').is(":visible")
+			if ($('#mapCanvas').parent().hasClass('active'))
 				$('#mapCanvas').animate top: "-=460px", "slow"
+			if (subfeature_happyhour_icon1.parent().hasClass('active'))
+				$('.subfeature-happyhour-icon1').animate left: "-=" + (subfeature_happyhour_icon1.width() + feature_left) + "px"
+			if (subfeature_happyhour_icon2.parent().hasClass('active'))
+				$('.subfeature-happyhour-icon2').animate left: "-=" + (subfeature_happyhour_icon1.width() + subfeature_happyhour_icon2.width() + feature_left) + "px"
 
-	if ($('#feature_slider').length == 0)
+	if (feature_slider.length == 0)
 		$(".navbar-fixed-top > .navbar-inner").addClass("sticky")
 
 
