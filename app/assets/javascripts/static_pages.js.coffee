@@ -6,13 +6,13 @@ $(document).ready ->
 	navbar_fixed_top = $('.navbar-fixed-top')
 	mapCanvas = $('#mapCanvas')
 
-	$(window).scroll ->
-		if ($(".navbar").offset().top > 30)
-			$(".navbar-fixed-top > .navbar-inner").addClass("sticky")
-		else
-			$(".navbar-fixed-top > .navbar-inner").removeClass("sticky")
-
 	if (feature_slider.length > 0)
+
+		$(window).scroll ->
+			if ($(".navbar").offset().top > 30)
+				$(".navbar-fixed-top > .navbar-inner").addClass("sticky")
+			else
+				$(".navbar-fixed-top > .navbar-inner").removeClass("sticky")
 
 		subfeature_happyhour_icon1 = $('.subfeature-happyhour-icon1')
 		subfeature_happyhour_icon2 = $('.subfeature-happyhour-icon2')
@@ -23,6 +23,8 @@ $(document).ready ->
 
 		$('.left.carousel-control').click => feature_slider.carousel('prev')
 		$('.right.carousel-control').click => feature_slider.carousel('next')
+		subfeature_happyhour_icon1_animation_distance = (subfeature_happyhour_icon1.width() + feature_left)
+		subfeature_happyhour_icon2_animation_distance = (Math.round(subfeature_happyhour_icon1.width()*0.75) + subfeature_happyhour_icon2.width() + feature_left)
 
 		feature_slider_carousel.on slid: ->
 			$('.active > .info').fadeIn()
@@ -38,7 +40,7 @@ $(document).ready ->
 
 			if (subfeature_happyhour_icon2.parent().hasClass('active'))
 				subfeature_happyhour_icon2.offset({left: -(subfeature_happyhour_icon2.width())})
-				subfeature_happyhour_icon2.animate left: "+=" + (subfeature_happyhour_icon1.width() + subfeature_happyhour_icon2.width() + feature_left) + "px"
+				subfeature_happyhour_icon2.animate left: "+=" + (Math.round(subfeature_happyhour_icon1.width()*0.75) + subfeature_happyhour_icon2.width() + feature_left) + "px"
 
 		feature_slider_carousel.on slide: -> 
 			$('.info').fadeOut()
@@ -48,10 +50,10 @@ $(document).ready ->
 				mapCanvas.animate top: "-=" + (mapCanvas.height() + mapCanvas_top) + "px", "slow"
 
 			if (subfeature_happyhour_icon1.parent().hasClass('active'))
-				$('.subfeature-happyhour-icon1').animate left: "-=" + (subfeature_happyhour_icon1.width() + feature_left) + "px"
-				
+				subfeature_happyhour_icon1.animate left: "-=" + (subfeature_happyhour_icon1.width() + feature_left) + "px"
+
 			if (subfeature_happyhour_icon2.parent().hasClass('active'))
-				$('.subfeature-happyhour-icon2').animate left: "-=" + (subfeature_happyhour_icon1.width() + subfeature_happyhour_icon2.width() + feature_left) + "px"
+				subfeature_happyhour_icon2.animate left: "-=" + (Math.round(subfeature_happyhour_icon1.width()*0.75) + subfeature_happyhour_icon2.width() + feature_left) + "px"
 	else
 		$(".navbar-fixed-top > .navbar-inner").addClass("sticky")
 
@@ -82,3 +84,11 @@ $(document).ready ->
 			mapCanvas.offset({top: -(mapCanvas.height())})
 			mapCanvas_top = navbar_fixed_top.height() + Math.round((feature_slider.height() - navbar_fixed_top.height() - mapCanvas.height()) / 2)
 			mapCanvas.animate top: "+=" + (mapCanvas.height() + mapCanvas_top) + "px", "slow"
+
+	$('#menu-tab a:not(.disabled)').click (e) ->
+		e.preventDefault()
+		$(this).tab('show')
+
+	$('#menu-tab a.disabled').click (e) ->
+		e.preventDefault()
+		$('#coming-soon-dialog').modal('show')

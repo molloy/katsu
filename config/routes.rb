@@ -1,6 +1,4 @@
 Katsu::Application.routes.draw do
-  get "static_pages/menu"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -62,7 +60,8 @@ Katsu::Application.routes.draw do
 
   get 'static_pages/home'
   get 'static_pages/menu'
-  
+
+  match 'menu' => 'static_pages#menu'
 
   root :to => 'static_pages#home'
 

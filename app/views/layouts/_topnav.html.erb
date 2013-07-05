@@ -1,29 +1,46 @@
 <div class="navbar transparent navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to image_tag('katsu_reversed_logo.png'), root_path, class: "brand" %>
-      <div class="nav-collapse collapse">
-        <div class="navbar-text pull-right">
-          <span>302 Rosecrans Ave.</span>
-          <br/>
-          <span>Manhattan Beach, CA 90266</span>
-          <br/>
-          <span>310.546.3761</span>
-          <%# render 'layouts/socialmedia' %>
-        </div>
-        <ul class="nav">
-          <li><a href="#" class="active">HOME</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#location">LOCATION</a></li>
-          <li><a href="#menu">MENU</a></li>
-        </ul>
-      </div>
-    </div>
-    <%= yield :subnav %>
-  </div>
+	<div class="navbar-inner">
+		<div class="container">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<%= link_to image_tag('katsu_reversed_logo.png'), root_path, class: "brand" %>
+			<div class="nav-collapse collapse">
+				<div class="navbar-text pull-right">
+					<span>302 Rosecrans Ave.</span>
+					<br/>
+					<span>Manhattan Beach, CA 90266</span>
+					<br/>
+					<span>310.546.3761</span>
+					<%# render 'layouts/socialmedia' %>
+				</div>
+				<ul class="nav">
+					<li><%= link_to 'HOME', root_path %></li>
+					<li><a href="#coming-soon-dialog" data-toggle="modal">ABOUT</a></li>
+					<li><a href="#coming-soon-dialog" data-toggle="modal">LOCATION</a></li>
+					<li><%= link_to 'MENU', menu_path %></li>
+				</ul>
+			</div>
+		</div>
+		<%= yield :subnav %>
+	</div>
+</div>
+
+<!-- Button to trigger modal -->
+<!-- <a href="#coming-soon-dialog" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
+
+<!-- Modal -->
+<div id="coming-soon-dialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="coming-soon-label" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="coming-soon-label">Coming soon</h3>
+	</div>
+	<div class="modal-body">
+		<p>This feature is not available yet. Currently, we're working on this website.</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Ok</button>
+	</div>
 </div>
