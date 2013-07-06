@@ -2,22 +2,26 @@
 	<%# render 'static_pages/menu_subnav' %>
 <% end %>
 
-<div class="menu-section container">
-	<div clas="row">
-		<div class="span12">
-			<ul class="nav nav-tabs" id="menu-tab">
-				<li><a href="#happyhour" class='disabled'>Happy Hour</a></li>
-				<li class="active"><a href="#lunch">Lunch</a></li>
-				<li><a href="#dinner" class='disabled'>Dinner</a></li>
-				<li><a href="#sushisashimi">Sushi &amp; Sashimi</a></li>
+<div class='menu-section container'>
+	<div clas='row'>
+		<div class='span12'>
+			<ul class='nav nav-tabs' id='menu-tab'>
+				<li class='active'><a href='#happyhour'>Happy Hour</a></li>
+				<li><a href='#lunch'>Lunch</a></li>
+				<li><a href='#dinner'>Dinner</a></li>
+				<li><a href='#sushisashimi'>Sushi &amp; Sashimi</a></li>
 			</ul>
-			<div class="tab-content">
-				<div class="tab-pane" id="happyhour">happy hour</div>
-				<div class="tab-pane active" id="lunch">
+			<div class='tab-content'>
+				<div class='tab-pane active' id='happyhour'>
+					<%= render partial: 'happyhour_menu' %>
+				</div>
+				<div class='tab-pane' id='lunch'>
 					<%= render partial: 'lunch_menu' %>
 				</div>
-				<div class="tab-pane" id="dinner">dinner</div>
-				<div class="tab-pane" id="sushisashimi">
+				<div class='tab-pane' id='dinner'>
+					<%= render partial: 'dinner_menu' %>
+				</div>
+				<div class='tab-pane' id='sushisashimi'>
 					<%= render partial: 'sushi_menu' %>
 				</div>
 			</div>
