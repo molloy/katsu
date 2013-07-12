@@ -43,7 +43,3 @@ gem 'bootstrap-sass'
 gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
-
-# gem 'aws-sdk'
-gem 'aws-sdk'
-gem 'dynamoid'

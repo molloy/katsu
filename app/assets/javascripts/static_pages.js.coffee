@@ -103,68 +103,160 @@ $ ->
 			for menupage, menupage_idx in data.menu.page
 				is_tab_active = if menupage_idx > 0 then '' else 'active'
 				is_pane_active = if menupage_idx > 0 then '' else ' active'
-				$('#menu-tabs').append "<li class=" + is_tab_active + "><a href='#menu-" + menupage_idx + "'>" + menupage.tablabel + "</a></li>"
-				new_tab_pane = 			"<div class='tab-pane " + is_pane_active + "' id='menu-" + menupage_idx + "'>"
-				new_tab_pane += 			"<div class='container menu'>"
-				new_tab_pane += 				"<div class='row'>"
-				new_tab_pane += 					"<div class='span12 menu-title-container'>"
+
+				# add tabs
+				tab = $('<li>', { class: is_tab_active })
+				tab.append $('<a>', { "href": ("#menu-" + menupage_idx), text: menupage.tablabel })
+				$('#menu-tabs').append tab
+
+				# add pane
+				pane = $('<div>', { class: 'tab-pane' + is_pane_active, id: 'menu-' + menupage_idx })
+				$('#menu-tab-panes').append pane
+				container_menu = $('<div>', { class: 'container menu' })
+				pane.append container_menu
+
+				# pane title
+				row = $('<div>', { class: 'row' })
+				container_menu.append row
+
+				span12_container = $('<div>', { class: 'span12 menu-title-container' })
+				row.append span12_container
+
 				if menupage.title
-					new_tab_pane += 					"<p class='menu-title'>" + menupage.title + "</p>"
+					span12_container.append $('<p>', { class: 'menu-title', text: menupage.title })
 				if menupage.info
-					new_tab_pane += 					"<p class='menu-subtitle'>" + menupage.info + "</p>"
-				new_tab_pane += 					"</div>"
-				new_tab_pane += 				"</div>"
-				new_tab_pane += 			"<div class='row'>"
-				if menupage.column
-					for menucolumn in menupage.column
-						menucolumn_span = if menucolumn.span then menucolumn.span else 1
-						new_tab_pane += 		"<div class='span" + (menucolumn_span * 4) + "'>"
-						if menucolumn.section
-							for menusection, menusection_idx in menucolumn.section
-								new_tab_pane += 	"<div class='row'>"
-								new_tab_pane += 		"<div class='span" + (menucolumn_span * 4) + " menu-section-title'>"
-								new_tab_pane += 			"<p>" + menusection.title + "</p>"
-								new_tab_pane += 		"</div>	"
-								new_tab_pane += 	"</div>"
-								if menusection.item
-									for menuitem, menuitem_idx in menusection.item
-										if menuitem_idx == 0
-											new_tab_pane += 	"<div class='row menu-line'>"
-										else if (menuitem_idx % menucolumn_span == 0)
-											new_tab_pane += 	"</div>"
-											new_tab_pane += 	"<div class='row menu-line'>"
+					span12_container.append $('<p>', { class: 'menu-subtitle', html: menupage.info })
 
-										new_tab_pane += 			"<div class='span" + (if menuitem.subprice then 4 else 3) + " menu-item'>"
-										new_tab_pane += 				"<p>" + menuitem.name + "</p>"
-										new_tab_pane += 			"</div>"
+				# add columns
+				row = $('<div>', { class: 'row' })
+				container_menu.append row
+				for menucolumn in menupage.column
+					menucolumn_span = if menucolumn.span then menucolumn.span else 1
+					span_container = $('<div>', { class: 'span' + (menucolumn_span * 4) })
+					row.append span_container
 
-										if !menuitem.subprice
-											new_tab_pane += 		"<div class='span1 menu-price'>"
-											new_tab_pane += 			"<p>" + menuitem.price + "</p>"
-											new_tab_pane += 		"</div>"
-										else
-											new_tab_pane += 	"</div>"
-											new_tab_pane += 	"<div class='row'>"
-											new_tab_pane += 		"<div class='span3 menu-item'>"
-											new_tab_pane += 			"<ul>"
-											for menusubprice_item in menuitem.subprice
-												new_tab_pane += 			"<li>" + menusubprice_item.name + "</li>"
-											new_tab_pane += 			"</ul>"
-											new_tab_pane += 		"</div>"
-											new_tab_pane += 		"<div class='span1 menu-price'>"
-											new_tab_pane += 			"<ul>"
-											for menusubprice_item in menuitem.subprice
-												new_tab_pane += 			"<li>" + menusubprice_item.price + "</li>"
-											new_tab_pane += 			"</ul>"
-											new_tab_pane += 		"</div>"
-									if menuitem_idx > 0
-										new_tab_pane += 		"</div>"
+					for menusection, menusection_idx in menucolumn.section
+						# add section title
+						row_menu_line = $('<div>', { class: 'row menu-line' })
+						span_container.append row_menu_line
+						menu_section_title = $('<div>', { class: 'span' + (menucolumn_span*4) + ' menu-section-title' })
+						row_menu_line.append menu_section_title
+						menu_section_title_content = $('<p>', { text: menusection.title })
+						menu_section_title.append menu_section_title_content
 
-						new_tab_pane += 		"</div>"
-				new_tab_pane += 			"</div>"
-				new_tab_pane += 		"</div>"
+						menu_section_info_content = $('<p>', { class: 'menu-info', html: menusection.info })
+						menu_section_title.append menu_section_info_content
 
-				$('#menu-tab-panes').append new_tab_pane
+						#  add menu items
+						for menuitem, menuitem_idx in menusection.item
+							if ((menuitem_idx % menucolumn_span) == 0)
+								row_menu_line = $('<div>', { class: 'row menu-line' })
+								span_container.append row_menu_line
+
+							menuitem_name = $('<div>', { class: 'span' + (if menuitem.subprice then 4 else 3) + ' menu-item' })
+							row_menu_line.append menuitem_name
+							menuitem_name_content = $('<p>', { text: menuitem.name })
+							menuitem_name.append menuitem_name_content
+
+							if menuitem.info
+								# alert 'here'
+								menuitem_info_content = $('<p>', { class: 'menu-info', text: menuitem.info })
+								menuitem_name.append menuitem_info_content
+
+							if menuitem.price
+								menuitem_price = $('<div>', { class: 'span1 menu-price' })
+								row_menu_line.append menuitem_price
+								menuitem_price_content = $('<p>', { text: menuitem.price })
+								menuitem_price.append menuitem_price_content
+
+							if menuitem.subprice
+								subprice_row = $('<div>', { class: 'row' })
+								span_container.append subprice_row
+
+								# menu item subprice name
+								menuitem_name = $('<div>', { class: 'span3 menu-item' })
+								subprice_row.append menuitem_name
+								subprice_ul = $('<ul>')
+								menuitem_name.append subprice_ul
+								for menuitem_subprice in menuitem.subprice
+									subprice_li = $('<li>', { text: menuitem_subprice.name })
+									subprice_ul.append subprice_li
+
+								# menu item subprice price
+								menuitem_price = $('<div>', { class: 'span1 menu-price' })
+								subprice_row.append menuitem_price
+								subprice_ul = $('<ul>')
+								menuitem_price.append subprice_ul
+								for menuitem_subprice in menuitem.subprice
+									subprice_li = $('<li>', { text: menuitem_subprice.price })
+									subprice_ul.append subprice_li
+
+
+
+
+
+				# $('#menu-tabs').append "<li class=" + is_tab_active + "><a href='#menu-" + menupage_idx + "'>" + menupage.tablabel + "</a></li>"
+				# new_tab_pane = 			"<div class='tab-pane " + is_pane_active + "' id='menu-" + menupage_idx + "'>"
+				# new_tab_pane += 			"<div class='container menu'>"
+				# new_tab_pane += 				"<div class='row'>"
+				# new_tab_pane += 					"<div class='span12 menu-title-container'>"
+				# if menupage.title
+				# 	new_tab_pane += 					"<p class='menu-title'>" + menupage.title + "</p>"
+				# if menupage.info
+				# 	new_tab_pane += 					"<p class='menu-subtitle'>" + menupage.info + "</p>"
+				# new_tab_pane += 					"</div>"
+				# new_tab_pane += 				"</div>"
+				# new_tab_pane += 			"<div class='row'>"
+				# if menupage.column
+				# 	for menucolumn in menupage.column
+				# 		menucolumn_span = if menucolumn.span then menucolumn.span else 1
+				# 		new_tab_pane += 		"<div class='span" + (menucolumn_span * 4) + "'>"
+				# 		if menucolumn.section
+				# 			for menusection, menusection_idx in menucolumn.section
+				# 				new_tab_pane += 	"<div class='row'>"
+				# 				new_tab_pane += 		"<div class='span" + (menucolumn_span * 4) + " menu-section-title'>"
+				# 				new_tab_pane += 			"<p>" + menusection.title + "</p>"
+				# 				new_tab_pane += 		"</div>	"
+				# 				new_tab_pane += 	"</div>"
+				# 				if menusection.item
+				# 					for menuitem, menuitem_idx in menusection.item
+				# 						if menuitem_idx == 0
+				# 							new_tab_pane += 	"<div class='row menu-line'>"
+				# 						else if (menuitem_idx % menucolumn_span == 0)
+				# 							new_tab_pane += 	"</div>"
+				# 							new_tab_pane += 	"<div class='row menu-line'>"
+
+				# 						new_tab_pane += 			"<div class='span" + (if menuitem.subprice then 4 else 3) + " menu-item'>"
+				# 						new_tab_pane += 				"<p>" + menuitem.name + "</p>"
+				# 						new_tab_pane += 			"</div>"
+
+				# 						if !menuitem.subprice
+				# 							new_tab_pane += 		"<div class='span1 menu-price'>"
+				# 							new_tab_pane += 			"<p>" + menuitem.price + "</p>"
+				# 							new_tab_pane += 		"</div>"
+				# 						else
+				# 							new_tab_pane += 	"</div>"
+				# 							new_tab_pane += 	"<div class='row'>"
+				# 							new_tab_pane += 		"<div class='span3 menu-item'>"
+				# 							new_tab_pane += 			"<ul>"
+				# 							for menusubprice_item in menuitem.subprice
+				# 								new_tab_pane += 			"<li>" + menusubprice_item.name + "</li>"
+				# 							new_tab_pane += 			"</ul>"
+				# 							new_tab_pane += 		"</div>"
+				# 							new_tab_pane += 		"<div class='span1 menu-price'>"
+				# 							new_tab_pane += 			"<ul>"
+				# 							for menusubprice_item in menuitem.subprice
+				# 								new_tab_pane += 			"<li>" + menusubprice_item.price + "</li>"
+				# 							new_tab_pane += 			"</ul>"
+				# 							new_tab_pane += 		"</div>"
+				# 					if menuitem_idx > 0
+				# 						new_tab_pane += 		"</div>"
+
+				# 		new_tab_pane += 		"</div>"
+				# new_tab_pane += 			"</div>"
+				# new_tab_pane += 		"</div>"
+
+				# $('#menu-tab-panes').append new_tab_pane
 
 				# draw pane contents
 

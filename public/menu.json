@@ -117,6 +117,156 @@
             ]
           }
         ]
+      },
+      {
+        "tablabel": "Lunch",
+        "title": "Lunch Menu",
+        "info": "TUESDAY - FRIDAY 11:30 - 2:00PM",
+        "column": [
+          {
+            "section": [
+              {
+                "title": "Lunch Menu",
+                "info": "&nbsp;",
+                "item": [
+                  {
+                    "name": "Chicken Curry Rice",
+                    "info": "Homemade chicken curry w/ egg",
+                    "price": "$8.5"
+                  },
+                  {
+                    "name": "Soba (hot or cold)",
+                    "info": "Japanese Buckwheat Noodles",
+                    "price": "$5.5"
+                  },
+                  {
+                    "name": "Cha-Soba",
+                    "info": "Japanese Green Tea Noodle",
+                    "price": "$6.5"
+                  },
+                  {
+                    "name": "Tempura Soba (hot)",
+                    "info": "Japanese Buckwheat or Green Tea Noodle",
+                    "price": "$7.5"
+                  },
+                  {
+                    "name": "Tempura Soba (cold)",
+                    "info": "Japanese Buckwheat or Green Tea Noodle",
+                    "price": "$8.5"
+                  },
+                  {
+                    "name": "Tekka-Don",
+                    "info": "Fresh tuna sashimi on top of sushi rice w/ miso soup",
+                    "price": "$10.5"
+                  },
+                  {
+                    "name": "Mucho Tekka",
+                    "info": "Extra tuna sashimi on top of sushi rice w/ miso soup",
+                    "price": "$13"
+                  },
+                  {
+                    "name": "Chirashi",
+                    "info": "Assorted fresh sashimi on top of sushi rice w/ miso soup &amp; salad",
+                    "price": "$13"
+                  },
+                  {
+                    "name": "Chirashi Deluxe",
+                    "info": "",
+                    "price": "$15"
+                  },
+                  {
+                    "name": "Ultra Chirashi",
+                    "price": "$18"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "section": [
+              {
+                "title": "Lunch Combination",
+                "info": "Served w/ miso soup, salad and rice",
+                "item": [
+                  {
+                    "name": "Vegetable Tempura",
+                    "price": "$6.95"
+                  },
+                  {
+                    "name": "Tempura",
+                    "info": "2pc shrimp tempura &amp; mixed veggie tempura",
+                    "price": "$8.95"
+                  },
+                  {
+                    "name": "Crab Cake &amp; Tempura",
+                    "info": "Deep fried creamy crab cake &amp; assorted tempura",
+                    "price": "$7.95"
+                  },
+                  {
+                    "name": "Karaage &amp; Tempura",
+                    "info": "Boneless fried chicken &amp; assorted tempura",
+                    "price": "$8.50"
+                  },
+                  {
+                    "name": "Teriyaki Chicken &amp; Tempura",
+                    "info": "White meat teriyaki chicken &amp; assorted tempura",
+                    "price": "$7.95"
+                  },
+                  {
+                    "name": "Saikoro Steak &amp; Tempura",
+                    "info": "Bite-size steak w/ special sauce &amp; assorted tempura",
+                    "price": "$9.5"
+                  },
+                  {
+                    "name": "Miso Seabass &amp; Tempura",
+                    "info": "Miso marinated seabass &amp; assorted tempura",
+                    "price": "$18"
+                  },
+                  {
+                    "name": "Sushi &amp; Tempura",
+                    "info": "5pcs of Chef's choice sushi &amp; assorted tempura",
+                    "price": "$9.95"
+                  },
+                  {
+                    "name": "Sushi &amp; Roll",
+                    "info": "5pcs of Chef's choice sushi &amp; choice of spicy tuna or california roll",
+                    "price": "$9.95"
+                  },
+                  {
+                    "name": "Sushi Combo",
+                    "info": "9pcs. Chef's choice sushi",
+                    "price": "$14"
+                  },
+                  {
+                    "name": "Sashimi Combo",
+                    "info": "5 kinds of Chef's choice sashimi",
+                    "price": "$18"
+                  },
+                  {
+                    "name": "Mini Chirashi Combo",
+                    "info": "Mini chirashi w/ hot or cold cha-soba",
+                    "price": "$14"
+                  },
+                  {
+                    "name": "Bento Box of the Day",
+                    "info": "Please ask server",
+                    "price": "$14"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "section": [
+              {
+                "title": "Lunch Drinks",
+                "info": "&nbsp;",
+                "item": [
+               ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }
