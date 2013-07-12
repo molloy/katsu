@@ -45,5 +45,5 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 # gem 'aws-sdk'
-gem 'aws-sdk', '~> 1.6.9'
+gem 'aws-sdk'
 gem 'dynamoid'

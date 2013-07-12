@@ -7,15 +7,15 @@
 				<span class="icon-bar"></span>
 			</button>
 			<%= link_to image_tag('katsu_reversed_logo.png'), root_path, class: "brand" %>
+			<div class="navbar-text pull-right">
+				<span>302 Rosecrans Ave.</span>
+				<br/>
+				<span>Manhattan Beach, CA 90266</span>
+				<br/>
+				<span>310.546.3761</span>
+				<%# render 'layouts/socialmedia' %>
+			</div>
 			<div class="nav-collapse collapse">
-				<div class="navbar-text pull-right">
-					<span>302 Rosecrans Ave.</span>
-					<br/>
-					<span>Manhattan Beach, CA 90266</span>
-					<br/>
-					<span>310.546.3761</span>
-					<%# render 'layouts/socialmedia' %>
-				</div>
 				<ul class="nav">
 					<li><%= link_to 'HOME', root_path %></li>
 					<li><a href="#coming-soon-dialog" data-toggle="modal">ABOUT</a></li>

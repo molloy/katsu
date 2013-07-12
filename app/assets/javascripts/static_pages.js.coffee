@@ -1,11 +1,13 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-$(document).ready ->
+$ ->
 	feature_slider = $('#feature_slider')
 	navbar_fixed_top = $('.navbar-fixed-top')
-	mapCanvas = $('#mapCanvas')
+	mapCanvas = $('#mapCanvas')	
+	mapCanvas.height((feature_slider.height() - navbar_fixed_top.height()) * 0.9)
 
+	# draw the feature slider
 	if (feature_slider.length > 0)
 
 		$(window).scroll ->
@@ -57,6 +59,7 @@ $(document).ready ->
 	else
 		$(".navbar-fixed-top > .navbar-inner").addClass("sticky")
 
+	# draw the map
 	if (mapCanvas.length > 0)
 		# alert('here')
 		new google.maps.Geocoder().geocode { 'address': '302 Rosecrans Ave, Manhattan Beach, CA 90266' }, (results, status) ->
@@ -85,10 +88,87 @@ $(document).ready ->
 			mapCanvas_top = navbar_fixed_top.height() + Math.round((feature_slider.height() - navbar_fixed_top.height() - mapCanvas.height()) / 2)
 			mapCanvas.animate top: "+=" + (mapCanvas.height() + mapCanvas_top) + "px", "slow"
 
-	$('#menu-tab a:not(.disabled)').click (e) ->
-		e.preventDefault()
-		$(this).tab('show')
+	# if ('#menu-tabs').length > 0
+	# 	$('#menu-tabs a:not(.disabled)').click (e) ->
+	# 		e.preventDefault()
+	# 		$(this).tab('show')
 
-	$('#menu-tab a.disabled').click (e) ->
-		e.preventDefault()
-		$('#coming-soon-dialog').modal('show')
+	# coming soon for disabled menus
+	# 	$('#menu-tabs a.disabled').click (e) ->
+	# 		e.preventDefault()
+	# 		$('#coming-soon-dialog').modal('show')
+
+	if $('#menu').length > 0
+		jQuery.getJSON 'static_pages/menudata.json', (data) ->
+			for menupage, menupage_idx in data.menu.page
+				is_tab_active = if menupage_idx > 0 then '' else 'active'
+				is_pane_active = if menupage_idx > 0 then '' else ' active'
+				$('#menu-tabs').append "<li class=" + is_tab_active + "><a href='#menu-" + menupage_idx + "'>" + menupage.tablabel + "</a></li>"
+				new_tab_pane = 			"<div class='tab-pane " + is_pane_active + "' id='menu-" + menupage_idx + "'>"
+				new_tab_pane += 			"<div class='container menu'>"
+				new_tab_pane += 				"<div class='row'>"
+				new_tab_pane += 					"<div class='span12 menu-title-container'>"
+				if menupage.title
+					new_tab_pane += 					"<p class='menu-title'>" + menupage.title + "</p>"
+				if menupage.info
+					new_tab_pane += 					"<p class='menu-subtitle'>" + menupage.info + "</p>"
+				new_tab_pane += 					"</div>"
+				new_tab_pane += 				"</div>"
+				new_tab_pane += 			"<div class='row'>"
+				if menupage.column
+					for menucolumn in menupage.column
+						menucolumn_span = if menucolumn.span then menucolumn.span else 1
+						new_tab_pane += 		"<div class='span" + (menucolumn_span * 4) + "'>"
+						if menucolumn.section
+							for menusection, menusection_idx in menucolumn.section
+								new_tab_pane += 	"<div class='row'>"
+								new_tab_pane += 		"<div class='span" + (menucolumn_span * 4) + " menu-section-title'>"
+								new_tab_pane += 			"<p>" + menusection.title + "</p>"
+								new_tab_pane += 		"</div>	"
+								new_tab_pane += 	"</div>"
+								if menusection.item
+									for menuitem, menuitem_idx in menusection.item
+										if menuitem_idx == 0
+											new_tab_pane += 	"<div class='row menu-line'>"
+										else if (menuitem_idx % menucolumn_span == 0)
+											new_tab_pane += 	"</div>"
+											new_tab_pane += 	"<div class='row menu-line'>"
+
+										new_tab_pane += 			"<div class='span" + (if menuitem.subprice then 4 else 3) + " menu-item'>"
+										new_tab_pane += 				"<p>" + menuitem.name + "</p>"
+										new_tab_pane += 			"</div>"
+
+										if !menuitem.subprice
+											new_tab_pane += 		"<div class='span1 menu-price'>"
+											new_tab_pane += 			"<p>" + menuitem.price + "</p>"
+											new_tab_pane += 		"</div>"
+										else
+											new_tab_pane += 	"</div>"
+											new_tab_pane += 	"<div class='row'>"
+											new_tab_pane += 		"<div class='span3 menu-item'>"
+											new_tab_pane += 			"<ul>"
+											for menusubprice_item in menuitem.subprice
+												new_tab_pane += 			"<li>" + menusubprice_item.name + "</li>"
+											new_tab_pane += 			"</ul>"
+											new_tab_pane += 		"</div>"
+											new_tab_pane += 		"<div class='span1 menu-price'>"
+											new_tab_pane += 			"<ul>"
+											for menusubprice_item in menuitem.subprice
+												new_tab_pane += 			"<li>" + menusubprice_item.price + "</li>"
+											new_tab_pane += 			"</ul>"
+											new_tab_pane += 		"</div>"
+									if menuitem_idx > 0
+										new_tab_pane += 		"</div>"
+
+						new_tab_pane += 		"</div>"
+				new_tab_pane += 			"</div>"
+				new_tab_pane += 		"</div>"
+
+				$('#menu-tab-panes').append new_tab_pane
+
+				# draw pane contents
+
+
+		$(document).on 'click', '#menu-tabs a:not(.disabled)', (e) ->
+			e.preventDefault()
+			$(this).tab('show')

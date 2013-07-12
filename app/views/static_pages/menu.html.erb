@@ -2,16 +2,16 @@
 	<%# render 'static_pages/menu_subnav' %>
 <% end %>
 
-<div class='menu-section container'>
+<div id="menu" class='menu-section container'>
 	<div clas='row'>
 		<div class='span12'>
-			<ul class='nav nav-tabs' id='menu-tab'>
+			<ul class='nav nav-tabs' id='menu-tabs'>
 				<li class='active'><a href='#happyhour'>Happy Hour</a></li>
 				<li><a href='#lunch'>Lunch</a></li>
 				<li><a href='#dinner'>Dinner</a></li>
 				<li><a href='#sushisashimi'>Sushi &amp; Sashimi</a></li>
 			</ul>
-			<div class='tab-content'>
+			<div class='tab-content' id='menu-tab-panes'>
 				<div class='tab-pane active' id='happyhour'>
 					<%= render partial: 'happyhour_menu' %>
 				</div>

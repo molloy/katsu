@@ -1,0 +1,123 @@
+{
+  "menu": {
+    "page": [
+      {
+        "tablabel": "Happy Hour",
+        "title": "Happy Hour Menu",
+        "info": "MONDAYS 5:30 - 8:30PM<br/>TUESDAY - SUNDAY 5:30 - 6:30PM",
+        "column": [
+          {
+            "span": 2,
+            "section": [
+              {
+                "title": "Hand Rolls",
+                "item": [
+                  {
+                    "name": "California Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Philly Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Baked Salmon Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Vegetable Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Avocado Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Spicy Tuna Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Spicy Yellowtail Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Spicy Scallop Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "Spicy Albacore Roll",
+                    "price": "$2.50"
+                  },
+                  {
+                    "name": "w/ Soy Wrap Paper",
+                    "price": "+$0.75"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "section": [
+              {
+                "title": "Drink Specials",
+                "item": [
+                  {
+                    "name": "KIRIN DRAFT BEER",
+                    "subprice": [
+                      {
+                        "name": "GLASS",
+                        "price": "$1.50"
+                      },
+                      {
+                        "name": "PITCHER",
+                        "price": "$7.50"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "HOT SAKE",
+                    "subprice": [
+                      {
+                        "name": "SMALL",
+                        "price": "$2.00"
+                      },
+                      {
+                        "name": "LARGE",
+                        "price": "$4.00"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "HOUSE COLD SAKE",
+                    "price": "$4.00"
+                  },
+                  {
+                    "name": "NIGORI SAKE",
+                    "price": "$4.00"
+                  },
+                  {
+                    "name": "HOUSE WINE",
+                    "subprice": [
+                      {
+                        "name": "RED",
+                        "price": "$4.00"
+                      },
+                      {
+                        "name": "WHITE",
+                        "price": "$4.00"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "CHAMPAGNE (187ml)",
+                    "price": "$4.00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
