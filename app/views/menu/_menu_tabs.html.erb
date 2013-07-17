@@ -1,0 +1,7 @@
+<% menuidx = 0 %>
+<% @menu_pages.each do |mp| %>
+	<li class='<%= (menuidx == 0) ? "active" : "" %>'>
+		<%= link_to mp.tab, '#menutab' + mp.id.to_s, 'data-showurl' => menu_path(mp)  %>
+	</li>
+	<% menuidx += 1 %>
+<% end %>

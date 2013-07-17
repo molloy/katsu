@@ -1,0 +1,61 @@
+<%= link_to 'Edit', edit_menu_path(@menu_page), remote: true %>
+<div class='container menu'>
+	<div class='row'>
+		<div class='span12 menu-title-container'>
+			<p class='menu-title'><%= @menu_page.title %></p>
+			<% @menu_page.infos.each do |info| %>
+				<p class='menu-subtitle'><%= info %></p>
+			<% end %>
+		</div>
+	</div>
+	<div class='row'>
+		<% @menu_page.menu_columns.each do |menu_column| %>
+			<div class='span<%= menu_column.span %>'>
+				<% menu_column.menu_sections.each do |menu_section| %>
+					<div class='row menu-line'>
+						<div class='span<%= menu_column.span %> menu-section-title'>
+							<p><%= menu_section.title %></p>
+						</div>	
+					</div>
+					<% menu_item_idx = 0 %>
+					<div class='row menu-line'>
+					<% menu_section.menu_items.each do |menu_item| %>
+						<% if (menu_item_idx > 0) && (menu_item_idx % menu_column.cols) == 0 %>
+							</div>
+							<div class='row menu-line'>
+						<% end %>
+							<div class='span<%= menu_item.span %> menu-item'>
+								<p><%= menu_item.title %></p>
+							</div>
+							<% if !menu_item.menu_prices.empty? %>
+								<% if menu_item.menu_prices.length() == 1 %>
+									<div class='span1 menu-price'>
+										<p><%= menu_item.menu_prices.first().price %></p>
+									</div>
+								<% else %>
+									</div>
+									<div class='row'>
+										<div class='span<%= menu_item.span %> menu-item'>
+											<ul>
+												<% menu_item.menu_prices.each do |menu_price| %>
+													<li><%= menu_price.title %></li>
+												<% end %>
+											</ul>
+										</div>	
+										<div class='span1 menu-price'>
+											<ul>
+												<% menu_item.menu_prices.each do |menu_price| %>
+													<li><%= menu_price.price %></li>
+												<% end %>
+											</ul>
+										</div>	
+								<% end %>
+							<% end %>
+						<% menu_item_idx += 1 %>
+					<% end %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>

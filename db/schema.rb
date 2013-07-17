@@ -11,6 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130712231541) do
+
+  create_table "menu_columns", :force => true do |t|
+    t.integer  "menu_page_id"
+    t.integer  "span"
+    t.integer  "cols"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "menu_items", :force => true do |t|
+    t.integer  "menu_section_id"
+    t.string   "title"
+    t.string   "info"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "menu_pages", :force => true do |t|
+    t.string   "title"
+    t.string   "tab"
+    t.string   "info"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "menu_prices", :force => true do |t|
+    t.integer  "menu_item_id"
+    t.string   "title"
+    t.string   "price"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "menu_sections", :force => true do |t|
+    t.integer  "menu_column_id"
+    t.string   "title"
+    t.string   "info"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
 end

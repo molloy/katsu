@@ -1,0 +1,24 @@
+<div id="menu" class='menu-section container'>
+	<div clas='row'>
+		<div class='span12'>
+			<ul class='nav nav-tabs' id='menu-tabs'>
+				<% menuidx = 0 %>
+				<% @menu_pages.each do |mp| %>
+					<li class='<%= (menuidx == 0) ? "active" : "" %>'>
+						<%= link_to mp.tab, '#menutab' + mp.id.to_s, 'data-showurl' => menu_path(mp)  %>
+					</li>
+					<% menuidx += 1 %>
+				<% end %>
+			</ul>
+			<div class='tab-content' id='menu-tab-panes'>
+				<% menuidx = 0 %>
+				<% @menu_pages.each do |mp| %>
+					<div class='tab-pane <%= (menuidx == 0) ? "active" : "" %>' id='<%= "menutab" + mp.id.to_s %>'>
+						<%= link_to 'Edit', edit_menu_path(mp), remote: true %>
+					</div>
+					<% menuidx += 1 %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

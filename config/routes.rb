@@ -58,11 +58,13 @@ Katsu::Application.routes.draw do
 
   # resources :home
 
+  # get 'menu/index'
+  resources :menu
   get 'static_pages/home'
   get 'static_pages/menu'
   get 'static_pages/menudata', defaults: { format: :json }
 
-  match 'menu' => 'static_pages#menu'
+  # match 'menu' => 'static_pages#menu'
 
   root :to => 'static_pages#home'
 

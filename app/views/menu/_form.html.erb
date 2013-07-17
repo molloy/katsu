@@ -1,0 +1,39 @@
+<%= form_for(@menu_page, url: menu_path, remote: true, html: { class: 'form-horizontal' }) do |mp| %>
+	<div class='container'>
+		<div class='row'>
+			<div class='span12'>
+				<div class='control-group'>
+					<%= mp.label :tab, 'Tab Label', :class => 'control-label', for: 'menu_page_tab' %>
+					<div class='controls'>
+						<%= mp.text_field :tab %>
+					</div>
+				</div>
+				<div class='control-group'>
+					<%= mp.label :title, 'Menu Title', class: 'control-label', for: 'menu_page_title' %>
+					<div class='controls'>
+						<%= mp.text_field :title %>
+					</div>
+				</div>
+				<div class='control-group'>
+					<div class='controls'>
+						<%= mp.submit %>
+					</div>
+				</div>
+
+			<%= mp.fields_for :menu_columns do |mc| %>
+				<div class='control-group'>
+					<%= mp.label :span, :class => 'control-label' %>
+					<div class='controls'>
+						<%= mc.text_field :span %>
+					</div>
+				</div>
+				<div class='control-group'>
+					<div class='controls'>
+						<%= mc.text_field :cols %>
+					</div>
+				</div>
+			<% end %>
+
+		</div>
+	</div>
+<% end %>
