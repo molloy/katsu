@@ -1,0 +1,25 @@
+<div class='controls controls-row menu-container-item'>
+	<%= f.fields_for :menu_items, MenuItem.new do |mi| %>
+		<%= mi.hidden_field :_destroy %>
+		<%= link_to '#', class: 'button menu-delete-item' do %>
+			<%= content_tag :i, '', class: 'icon-trash' %>
+		<% end %>
+		<%= mi.text_field :title, class: 'span2' %>
+		<%= mi.text_field :info, class: 'span2' %>
+
+		<% price_count = 0 %>
+		<%= mi.fields_for :menu_prices do |mpr| %>
+			<div class='menu-container-price'>
+				<%= mpr.text_field :title, class: 'span2' %>
+				<%= mpr.text_field :price, class: 'span1' %>
+				<%= mpr.hidden_field :_destroy %>
+				<%= link_to '#', class: 'button menu-delete-price' do %>
+					<%= content_tag :i, '', class: 'icon-trash' %>
+				<% end %>
+			</div>
+			<% price_count += 1 %>
+		<% end %>
+
+		<%= add_menu_price_button mi, price_count %>
+	<% end %>
+</div>

@@ -1,3 +1,46 @@
 // Place all the styles related to the menu controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.menu-inline {
+	display: inline-block;
+}
+
+.edit_menu_page {
+	label.span1, label.span2 {
+		margin-left: 0px;
+	}
+
+	div.menu-container-column, div.menu-container-section {
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-khtml-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border: 1px solid #ddd;
+		padding: 5px;
+
+		.span-icon {
+			float: left;
+			display: block;
+			width: 14px;
+			margin-left: 0px;
+			height: 20px;
+			padding-top: 6px;
+		}
+	}
+}
+
+.controls-row {
+	.button {
+		float: left;
+		display: block;
+		width: 14px;
+		margin-left: 0px;
+		height: 20px;
+		padding-top: 6px;
+		padding-right: 7px;
+	}
+
+	[class*=span] + button, div.menu-container-price + button, input[type='hidden'] + button, input[type='hidden'] + [class*='span'], label[class='button'] + [class*='span'], div.menu-container-price [class*='span'] {
+		margin-left: 30px;
+	}
+}
