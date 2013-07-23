@@ -1,0 +1,3 @@
+<li class='<%= (menu_page_id == 0) ? "active" : "" %>'>
+	<%= link_to ((defined? mp) ? mp.tab : '+'), '#menutab' + menu_page_id.to_s, 'data-showurl' => ((defined? mp) ? menu_path(mp) : new_menu_path), class: ((defined? mp) ? "" : "new-menu-page") %>
+</li>

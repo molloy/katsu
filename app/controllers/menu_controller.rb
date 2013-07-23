@@ -19,4 +19,22 @@ class MenuController < ApplicationController
   		redirect_to menu_path(@menu_page)
   	end
   end
+
+  def destroy
+    @menu_page = MenuPage.find(params[:id])
+    @menu_page.destroy
+    redirect_to menu_index_path
+  end
+
+  def new
+    @menu_page = MenuPage.new
+  end
+
+  def create
+    @menu_page = MenuPage.new(params[:menu_page])
+
+    if @menu_page.save
+      redirect_to menu_path(@menu_page)
+    end
+  end
 end

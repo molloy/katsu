@@ -1,0 +1,9 @@
+<% if (defined? create_new_record) && create_new_record %>
+	<%= mc.fields_for :menu_sections, MenuSection.new do |ms| %>
+		<%= render partial: 'menu_section_form', locals: { ms: ms } %>
+	<% end %>
+<% else %>
+	<%= mc.fields_for :menu_sections do |ms| %>
+		<%= render partial: 'menu_section_form', locals: { ms: ms } %>
+	<% end %>
+<% end %>

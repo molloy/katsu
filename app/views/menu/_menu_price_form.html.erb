@@ -1,0 +1,6 @@
+<%= mpr.text_field :title, class: 'span2' %>
+<%= mpr.text_field :price, class: 'span1' %>
+<%= mpr.hidden_field :_destroy %>
+<%= link_to '#', class: 'button menu-delete-price' do %>
+	<%= content_tag :i, '', class: 'icon-trash' %>
+<% end %>

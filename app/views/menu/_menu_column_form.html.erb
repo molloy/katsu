@@ -1,0 +1,19 @@
+<div class='menu-container-column'>
+	<div class='controls controls-row'>
+		<%= content_tag :div, '', class: 'button' %>
+		<%= mc.label 'Column span', class: 'span2' %>
+		<%= mc.label '# of columns', class: 'span2' %>
+	</div>
+	<div class='controls controls-row'>
+		<%= mc.hidden_field :_destroy %>
+		<%= link_to '#', class: 'button menu-delete-column' do %>
+			<%= content_tag :i, '', class: 'icon-trash' %>
+		<% end %>
+		<%= mc.text_field :span, class: 'span2' %>
+		<%= mc.text_field :cols, class: 'span2' %>
+	</div>
+
+	<%= render partial: 'menu_section', locals: { mc: mc } %>
+
+	<%= add_menu_section_button mc %>
+</div>

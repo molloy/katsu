@@ -1,0 +1,9 @@
+<% if (defined? create_new_record) && create_new_record %>
+	<%= mp.fields_for :menu_columns, MenuColumn.new do |mc| %>
+		<%= render partial: 'menu_column_form', locals: { mc: mc } %>
+	<% end %>
+<% else %>
+	<%= mp.fields_for :menu_columns do |mc| %>
+		<%= render partial: 'menu_column_form', locals: { mc: mc } %>
+	<% end %>
+<% end %>

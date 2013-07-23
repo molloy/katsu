@@ -17,6 +17,7 @@
 		-webkit-border-radius: 5px;
 		border: 1px solid #ddd;
 		padding: 5px;
+		margin-bottom: 10px;
 
 		.span-icon {
 			float: left;
@@ -40,7 +41,7 @@
 		padding-right: 7px;
 	}
 
-	[class*=span] + button, div.menu-container-price + button, input[type='hidden'] + button, input[type='hidden'] + [class*='span'], label[class='button'] + [class*='span'], div.menu-container-price [class*='span'] {
+	[class*=span] + input[type='button'], [class*=span] + button, div.menu-container-price + button, div.menu-container-price + input[type='button'], input[type='hidden'] + button, input[type='hidden'] + input[type='button'], input[type='hidden'] + [class*='span'], label[class='button'] + [class*='span'], div.menu-container-price [class*='span'] {
 		margin-left: 30px;
 	}
 }

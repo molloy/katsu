@@ -1,0 +1,13 @@
+<% if (defined? create_new_record) && create_new_record %>
+	<%= mi.fields_for :menu_prices, MenuPrice.new do |mpr| %>
+		<div class='menu-container-price'>
+			<%= render partial: 'menu_price_form', locals: { mpr: mpr } %>
+		</div>
+	<% end %>
+<% else %>
+	<%= mi.fields_for :menu_prices do |mpr| %>
+		<div class='menu-container-price'>
+			<%= render partial: 'menu_price_form', locals: { mpr: mpr } %>
+		</div>
+	<% end %>
+<% end %>	

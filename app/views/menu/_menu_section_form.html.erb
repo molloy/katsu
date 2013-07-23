@@ -1,0 +1,30 @@
+<div class='menu-container-section'>
+	<div class='controls controls-row'>
+		<%= content_tag :div, '', class: 'button' %>
+		<%= ms.label 'Section Title', class: 'span2' %>
+		<%= ms.label 'Section Description', class: 'span2' %>
+	</div>
+	<div class='controls controls-row'>
+		<%= ms.hidden_field :_destroy %>
+		<%= link_to '#', class: 'button menu-delete-section' do %>
+			<%= content_tag :i, '', class: 'icon-trash' %>
+		<% end %>
+		<%= ms.text_field :title, class: 'span2' %>
+		<%= ms.text_field :info, class: 'span2' %>
+	</div>
+
+	<div class='controls controls-row'>
+		<%= content_tag :div, '', class: 'button' %>
+		<%= ms.label 'Menu Item', class: 'span2' %>
+		<%= ms.label 'Menu Description', class: 'span2' %>
+		<%= ms.label 'Price #1 Description', class: 'span2' %>
+		<%= ms.label 'Price #1', class: 'span1' %>
+		<%= ms.label ' ', class: 'button' %>
+		<%= ms.label 'Price #2 Description', class: 'span2' %>
+		<%= ms.label 'Price #2', class: 'span1' %>
+		<%= ms.label ' ', class: 'button' %>
+	</div>
+
+	<%= render partial: 'menu_item', locals: { ms: ms } %>
+	<%= add_menu_item_button ms %>
+</div>

@@ -60,6 +60,7 @@ Katsu::Application.routes.draw do
 
   # get 'menu/index'
   resources :menu
+
   get 'static_pages/home'
   get 'static_pages/menu'
   get 'static_pages/menudata', defaults: { format: :json }

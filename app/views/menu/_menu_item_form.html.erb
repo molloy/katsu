@@ -1,0 +1,10 @@
+<%= mi.hidden_field :_destroy %>
+<%= link_to '#', class: 'button menu-delete-item' do %>
+	<%= content_tag :i, '', class: 'icon-trash' %>
+<% end %>
+<%= mi.text_field :title, class: 'span2' %>
+<%= mi.text_field :info, class: 'span2' %>
+
+<% price_count = 0 %>
+<%= render partial: 'menu_price', locals: { mi: mi } %>
+<%= add_menu_price_button mi, price_count %>

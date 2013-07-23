@@ -1,0 +1,5 @@
+<div class='tab-pane <%= (menu_page_id == 0) ? "active" : "" %>' id='<%= "menutab" + menu_page_id.to_s %>'>
+	<% if (defined? mp) %>
+		<%= render partial: 'show', locals: { menu_page: mp } %>
+	<% end %>
+</div>

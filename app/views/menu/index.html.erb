@@ -1,23 +1,18 @@
+<% new_menu_page_id = (1 + Random.rand(Time.now.to_i)) %>
 <div id="menu" class='menu-section container'>
 	<div clas='row'>
 		<div class='span12'>
 			<ul class='nav nav-tabs' id='menu-tabs'>
-				<% menuidx = 0 %>
-				<% @menu_pages.each do |mp| %>
-					<li class='<%= (menuidx == 0) ? "active" : "" %>'>
-						<%= link_to mp.tab, '#menutab' + mp.id.to_s, 'data-showurl' => menu_path(mp)  %>
-					</li>
-					<% menuidx += 1 %>
+				<% @menu_pages.each_with_index do |mp, menuindex| %>
+					<%= render partial: 'tab', locals: { menu_page_id: menuindex, mp: mp } %>
 				<% end %>
+				<%= render partial: 'tab', locals: { menu_page_id: new_menu_page_id } %>
 			</ul>
 			<div class='tab-content' id='menu-tab-panes'>
-				<% menuidx = 0 %>
-				<% @menu_pages.each do |mp| %>
-					<div class='tab-pane <%= (menuidx == 0) ? "active" : "" %>' id='<%= "menutab" + mp.id.to_s %>'>
-						<%= link_to 'Edit', edit_menu_path(mp), remote: true %>
-					</div>
-					<% menuidx += 1 %>
+				<% @menu_pages.each_with_index do |mp, menuindex| %>
+					<%= render partial: 'tab_pane', locals: { menu_page_id: menuindex, mp: mp } %>
 				<% end %>
+				<%= render partial: 'tab_pane', locals: { menu_page_id: new_menu_page_id } %>
 			</div>
 		</div>
 	</div>

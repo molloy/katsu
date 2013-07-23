@@ -1,0 +1,13 @@
+<% if (defined? create_new_record) && create_new_record %>
+	<div class='controls controls-row menu-container-item'>
+		<%= ms.fields_for :menu_items, MenuItem.new do |mi| %>
+			<%= render partial: 'menu_item_form', locals: { mi: mi } %>
+		<% end %>
+	</div>
+<% else %>
+	<%= ms.fields_for :menu_items do |mi| %>
+		<div class='controls controls-row menu-container-item'>
+			<%= render partial: 'menu_item_form', locals: { mi: mi } %>
+		</div>
+	<% end %>
+<% end %>

@@ -14,7 +14,7 @@ $ ->
 		prev_node = $(this).prev()
 		if prev_node.attr('type') == 'hidden'
 			prev_node.val('true')
-			$(this).closest('[class^=menu-container]').hide()
+			$(this).closest('[class*=menu-container]').hide()
 
-		if $(this).closest('[class^=menu-container]').parent().find('.menu-container-price') && ($(this).closest('.menu-container-price').parent().find('.menu-container-price:visible').length < 2)
-			$(this).closest('.menu-container-price').parent().find('button').show();
+		if ($(this).closest('[class*=menu-container]').parent().find('.menu-container-price:visible').length < 2)
+			$(this).closest('.menu-container-price').parent().find('input[type="button"]').show();
