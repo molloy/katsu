@@ -44,3 +44,9 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'mysql2'
+
+gem 'devise'
+
+group :development do
+  gem 'seed_dump'
+end

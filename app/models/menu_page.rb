@@ -8,4 +8,15 @@ class MenuPage < ActiveRecord::Base
   def infos
   	return self.info.blank? ? [] : self.info.split('<br/>')
   end
+
+  def first_section_infos
+  	result = ''
+  	self.menu_columns.each do |menu_column|
+  		if (menu_column.menu_sections.length && !menu_column.menu_sections[0].info.blank?)
+  			result = '&nbsp;'
+  			break
+  		end
+  	end
+  	return result
+  end
 end

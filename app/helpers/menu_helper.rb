@@ -15,6 +15,9 @@ module MenuHelper
 		if ($(this).parent().find('.menu-container-price:visible').length > 1) {
 			$(this).hide();
 		}
+
+		var firstchild = $(this).prev().find('input:first-child');
+		firstchild.focus();
 	    HEREDOC
 	    
 	    button_to_function 'Add Price', functionHTML, style: ((price_count > 1) ? 'display: none;' : '')
@@ -32,6 +35,9 @@ module MenuHelper
 			.replace(/\\[menu_items_attributes\\]\\[\\d+\\]/g, new_menu_item_name)
 			.replace(/menu_items_attributes_\\d+/g, new_menu_item_id);
 		$(new_menu_item_html).insertBefore($(this));
+
+		var firstchild = $(this).prev().find('input[type="text"]');
+		firstchild.first().focus();
 	    HEREDOC
 
 	    button_to_function 'Add Menu Item', functionHTML
@@ -49,6 +55,9 @@ module MenuHelper
 			.replace(/\\[menu_sections_attributes\\]\\[\\d+\\]/g, new_menu_section_name)
 			.replace(/menu_sections_attributes_\\d+/g, new_menu_section_id);
 		$(new_menu_section_html).insertBefore($(this));
+
+		var firstchild = $(this).prev().find('input[type="text"]');
+		firstchild.first().focus();
 	    HEREDOC
 	    
 	    button_to_function 'Add Menu Section',functionHTML
@@ -66,6 +75,9 @@ module MenuHelper
 			.replace(/\\[menu_columns_attributes\\]\\[\\d+\\]/g, new_menu_column_name)
 			.replace(/menu_columns_attributes_\\d+/g, new_menu_column_id);
 		$(new_menu_column_html).insertBefore($(this));
+
+		var firstchild = $(this).prev().find('input[type="text"]');
+		firstchild.first().focus();
 	    HEREDOC
 	    
 	    button_to_function 'Add Menu Column',functionHTML

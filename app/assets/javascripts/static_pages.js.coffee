@@ -92,3 +92,18 @@ $ ->
 	# 	$(document).on 'click', '#menu-tabs a:not(.disabled)', (e) ->
 	# 		e.preventDefault()
 	# 		$(this).tab('show')
+
+	login_form = $('form.new_user')
+	if login_form.length > 0
+		new_container = $('<div class="container menu-section">')
+		new_row = $('<div class="row">')
+		new_span = $('<div class="span2 offset5">')
+		new_container.append(new_row)
+		new_row.append(new_span)
+		new_container.insertBefore(login_form.parent())
+		login_form.parent().children().appendTo(new_span)
+		# login_form.parent().addClass('container')
+		# login_form.parent().addClass('menu-section')
+		# $(window).scroll ->
+		# 	login_form.parent().addClass('container')
+		# 	login_form.parent().addClass('menu-section')

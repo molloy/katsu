@@ -7,4 +7,4 @@ if active_tab.hasClass('new-menu-page')
 	$('#menu-tabs').append('<%= escape_javascript(render(partial: 'tab', locals: { menu_page_id: (1 + Time.now.to_i ) })) %>')
 	$('#menu-tab-panes').append('<%= escape_javascript(render(partial: 'tab_pane', locals: { menu_page_id: (1 + Time.now.to_i ) })) %>')
 
-$('<%= escape_javascript(render(partial: "show", locals: { menu_page: @menu_page })) %>').appendTo('.tab-pane.active').hide().fadeIn()
+$('<%= escape_javascript(render(partial: "show", locals: { menu_page: @menu_page })) %>').appendTo('.tab-pane.active').fadeIn()

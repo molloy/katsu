@@ -6,13 +6,17 @@
 				<% @menu_pages.each_with_index do |mp, menuindex| %>
 					<%= render partial: 'tab', locals: { menu_page_id: menuindex, mp: mp } %>
 				<% end %>
-				<%= render partial: 'tab', locals: { menu_page_id: new_menu_page_id } %>
+				<% if user_signed_in? && current_user.admin? %>
+					<%= render partial: 'tab', locals: { menu_page_id: new_menu_page_id } %>
+				<% end %>
 			</ul>
 			<div class='tab-content' id='menu-tab-panes'>
 				<% @menu_pages.each_with_index do |mp, menuindex| %>
 					<%= render partial: 'tab_pane', locals: { menu_page_id: menuindex, mp: mp } %>
 				<% end %>
-				<%= render partial: 'tab_pane', locals: { menu_page_id: new_menu_page_id } %>
+				<% if user_signed_in? && current_user.admin? %>
+					<%= render partial: 'tab_pane', locals: { menu_page_id: new_menu_page_id } %>
+				<% end %>
 			</div>
 		</div>
 	</div>

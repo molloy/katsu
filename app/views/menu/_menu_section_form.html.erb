@@ -3,6 +3,7 @@
 		<%= content_tag :div, '', class: 'button' %>
 		<%= ms.label 'Section Title', class: 'span2' %>
 		<%= ms.label 'Section Description', class: 'span2' %>
+		<%= ms.label '# of Prices in Headers', class: 'span2' %>
 	</div>
 	<div class='controls controls-row'>
 		<%= ms.hidden_field :_destroy %>
@@ -11,6 +12,7 @@
 		<% end %>
 		<%= ms.text_field :title, class: 'span2' %>
 		<%= ms.text_field :info, class: 'span2' %>
+		<%= ms.text_field :price_headers, class: 'span2' %>
 	</div>
 
 	<div class='controls controls-row'>
