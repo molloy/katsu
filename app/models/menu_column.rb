@@ -7,6 +7,6 @@ class MenuColumn < ActiveRecord::Base
   accepts_nested_attributes_for :menu_sections, allow_destroy: true
 
   def cols
-  	return read_attribute(:cols).nil? ? 1 : read_attribute(:cols)
+  	return read_attribute(:cols) || 1
   end
 end

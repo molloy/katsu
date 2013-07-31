@@ -119,6 +119,11 @@ namespace :deploy do
     run "#{sudo} find #{current_path}/tmp/ -type d -exec chmod 775 {} \\;"
     run "#{sudo} find #{current_path}/tmp/ -exec chown #{user}:#{user_rails} {} \\;"
   end
+
+  desc "reload the database with seed data"
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
  
   # Precompile assets only when needed
   namespace :assets do
